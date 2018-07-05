@@ -112,6 +112,7 @@ $(document).ready(function () {
     // 120000 is 2 min
     // 300000 is 5 min
     updatetides();
+    setInterval(updatetides, 600000);
 });
 // function getweather() {
 //     $.simpleWeather({
@@ -309,7 +310,7 @@ function updatetides() {
     var tideurl = "https://tidesandcurrents.noaa.gov/api/datagetter?begin_date=" + tday_formated + "&range=48&station=8452660&product=predictions&datum=MLLW&units=english&time_zone=LST&interval=hilo&application=ports_screen&format=json";
     var tidetext = '<thead><tr><td>Date</td><td>Time</td><td>Height<br>In ft</td><td>High<br>Low</td></tr></thead>';
     $.getJSON( tideurl, function (tides) {
-        //console.log(tides);
+        console.log('Getting tides ' + Date());
         console.log('Tides length' + tides.predictions.length);
         for (i = 0; i < tides.predictions.length; i++) {
             t = tides.predictions[i].t;
