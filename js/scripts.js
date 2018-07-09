@@ -161,7 +161,7 @@ function getWunderground() {
     //weatherurl ="http://api.wunderground.com/api/4a1f4522c9d05e8c/geolookup/forecast/conditions/q/pws:KRIJAMES4.json"
     
     $.getJSON(weatherurl, function(weatherdata) {
-        console.log(weatherdata.current_observation);
+        // console.log(weatherdata.current_observation);
         current_string = `Current Conditions: ${weatherdata.current_observation.weather}`;
         current_temp = `Current Temperature: ${weatherdata.current_observation.temp_f}&deg F`;
         current_wind = `Wind: ${weatherdata.current_observation.wind_string}`
@@ -173,11 +173,11 @@ function getWunderground() {
         $("#current_temp").html(current_temp);
         $("#current_icon").html(icon_url);
         $("#current_wind").html(current_wind);
-        console.log(weatherdata.forecast);
-        console.log(weatherdata.tide);
-        console.log(weatherdata);
-        console.log(weatherdata.conditions);
-        console.log(Date());
+        // console.log(weatherdata.forecast);
+        // console.log(weatherdata.tide);
+        // console.log(weatherdata);
+        // console.log(weatherdata.conditions);
+        console.log('Geting Weather' + Date());
         // forecast =  weatherdata.forecast;
         currentDay_forecast = `Today - ${weatherdata.forecast.txt_forecast.forecastday[0].fcttext}`;
         cDay_icon =
@@ -311,7 +311,7 @@ function updatetides() {
     var tidetext = '<thead><tr><td>Date</td><td>Time</td><td>Height<br>In ft</td><td>High<br>Low</td></tr></thead>';
     $.getJSON( tideurl, function (tides) {
         console.log('Getting tides ' + Date());
-        console.log('Tides length' + tides.predictions.length);
+        // console.log('Tides length' + tides.predictions.length);
         for (i = 0; i < tides.predictions.length; i++) {
             t = tides.predictions[i].t;
             thours = t.substr(11,2);
@@ -341,15 +341,15 @@ function updateOpentimes() {
     var gfy = opend.getFullYear();
     var gd = opend.getDate();
     var gm = (opend.getMonth()) + 1;
-    console.log("getMonth " + gm);
-    console.log("getDate " + gd);
+    // console.log("getMonth " + gm);
+    // console.log("getDate " + gd);
     var gms = gm.toString();
-    console.log(gms.length);
+    // console.log(gms.length);
     if (gms.length == 1) {
         gms = "0" + gms;
     }
     var gds = gd.toString();
-    console.log(gds.length);
+    // console.log(gds.length);
     if (gds.length == 1) {
         gds = "0" + gds; 
     }
