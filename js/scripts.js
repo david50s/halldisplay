@@ -177,7 +177,8 @@ function getWunderground() {
         // console.log(weatherdata.tide);
         // console.log(weatherdata);
         // console.log(weatherdata.conditions);
-        console.log('Geting Weather' + Date());
+        ritenow = new Date();
+        console.log('Getting Weather ' + ritenow.getHours() + ':' + ritenow.getMinutes());
         // forecast =  weatherdata.forecast;
         currentDay_forecast = `Today - ${weatherdata.forecast.txt_forecast.forecastday[0].fcttext}`;
         cDay_icon =
@@ -212,6 +213,7 @@ function getWunderground() {
         $("#day4_icon").html(day4_icon);
         $("#nit4_forecast").html(nit4_forecast);
         $("#nit4_icon").html(nit4_icon);
+        $("#gettime").html(`Last Update: ${ritenow.getHours()}:${ritenow.getMinutes()}`)
          //error: function (error) {
          //    alert('no connection');
         //       $("#currentDay_forecast").html('<p>' + error + '</p>');
@@ -305,12 +307,13 @@ function closecard04() {
         'top': '83vh'
     }, 1000);
 }
-var t, v, type, thours, tminutes, ampm;
+var t, v, type, thours, tminutes, ritenow, ampm;
 function updatetides() {
     var tideurl = "https://tidesandcurrents.noaa.gov/api/datagetter?begin_date=" + tday_formated + "&range=48&station=8452660&product=predictions&datum=MLLW&units=english&time_zone=LST&interval=hilo&application=ports_screen&format=json";
     var tidetext = '<thead><tr><td>Date</td><td>Time</td><td>Height<br>In ft</td><td>High<br>Low</td></tr></thead>';
     $.getJSON( tideurl, function (tides) {
-        console.log('Getting tides ' + Date());
+        ritenow = new Date();
+        console.log('Getting Tides ' + ritenow.getHours() + ':' + ritenow.getMinutes());
         // console.log('Tides length' + tides.predictions.length);
         for (i = 0; i < tides.predictions.length; i++) {
             t = tides.predictions[i].t;
